@@ -1,0 +1,39 @@
+<!<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>IAA</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+    </head>
+
+    <body>
+      <div id = "Wrapper">
+         <form>
+           <div>
+             <label>SearchName : </label><input id="collection" name="collection" value="javaDev" type="text"/>
+             <img src= "infobox.png"height=20px width=20px/>
+           </div>
+            <div>
+              <li><span>Job Name</span><input class="q" beenChanged=false onfocus="clearValue(this)" type="text" name="Job_Name" value="javascript"/></li>
+              <li><span>Salary</span><input   class="q" beenChanged=false onfocus="clearValue(this)" type="number" name="Salary" value="50000"/></li>
+              </div>
+
+            <div>
+              <li><span>Part-Time</span><input class="q" name="action" value="Part Time" type="radio" /></li>
+              <li><span>Full-Time</span><input class="q" name="action" value="Full Time"  type="radio" /></li>
+              <li><span>Seasonal</span><input  class="q" name="action" value="Seasonal" type="radio" /></li>
+              <li><span>Contract</span><input  class="q" name="action" value="Contract" type="radio" /></li>
+
+              </div>
+
+            <div>
+              <li><span>Location</span><input id="l" type="text" name="Location" value="Ottawa,ON"/></li>
+              <li><span>Radius</span><input type="number" name="Radius" value="50000"/></li>
+              </div>
+            <div id="Submit" onclick="ProcessData()"><a href="./login.html">Submit</a></div>
+           </form>
+        </div>
+      </body>
+      <script type="text/javascript" src="./frontend.js"></script>
+</html>

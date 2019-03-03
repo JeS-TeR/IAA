@@ -1,0 +1,23 @@
+Day 1:
+
+Theoreticaly speaking I read alot of things... Consciously IDK what i read, but i'd like to think its somewhere in my subconscience just waiting to suprise me as soon as I start reading again.
+
+Practically: 
+	got electron: 
+		A Nodejs framework that enables me to make desktop applications using web technologies... Parses html,css and js code. 
+		Allows for communication between console(the application that it renders) and the main process(application that renders), seeing as how they are both 		connected.
+
+	Learned a bit about urls after using requestjs, which is a node library used to send requests to remote server, it has a callback function that is capable of accessing the response.
+
+
+	Used cheeriojs, A webscraping library that implents Jquery's simplistic Dom manipulation.
+
+	Created basic gui that sends the form data to the main process.
+
+
+Day 2(plan):
+
+	Send valid data to main process.
+	main process interprets data.
+	data is used for query string for indeed
+	add more options to gui.

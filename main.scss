@@ -1,0 +1,30 @@
+*{
+  margin:0px;
+  padding:0px;
+  body{
+    // border:2px solid black;
+    font-size: 20px;
+    width:100%;
+    #wrapper{
+      form{
+        list-style-type:none;
+        div{
+          // border:2px solid red;
+          margin-top:20px;
+          li{
+            // border:2px solid green;
+            span{
+              // border:2px solid black;
+              display:inline-block;
+              font-size:20px;
+              width:20%;
+            }
+          }
+        }
+        #Submit{
+          margin-top:20px;
+        }
+      }
+    }
+  }
+}
