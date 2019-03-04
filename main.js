@@ -25,7 +25,6 @@ const database = new MongoClient(url);
 //Also requires insight, so it'll hone my skills for long term.
 function dbQueryRouter(caller,collection,args){
   database.connect(function(err){
-    console.log("Qe in dbQR nyakke");
     let db  = database.db("iaa");
     if(err) console.log(err);
     switch(caller){
@@ -33,26 +32,24 @@ function dbQueryRouter(caller,collection,args){
         SJ_db_qHandler(db,collection,args);
         break;
     }
-  })
+  });
 }
 
 //dbHandlers
 
 function SJ_db_qHandler(db,collection,args){
-//  console.log(collection);
-//  console.log(args);
   collec = db.collection(collection);
-  for(i = 0; i < args.length;i++){
-    collec.insert(args[i]);
-  }
-  collec.find({}).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    db.close();
-  });
+  args.forEach(function (elem,i){
+    //console.log(elem["id"]);
+    collec.findOne({"id" : elem["id"]}, function (err,results){
+      //console.log(results);
+      if(results !== null)
+      return;
+      //console.log(null);
+      collec.insert(elem);
+      })
+  })
 }
-
-
 
 //Main "interface" that handles scraping...
 //Will add ipcMain call in this... to send data back to user
@@ -67,25 +64,29 @@ function scrapeJobs(body,params){
   var allObj =[];
   JSCards.each((i,JSC) => {
     var dbObj ={};
-    if (0 >= 1) return
-    element = cheerio.load($.html(JSC)),
-    dbObj["compName"] = element(".company").text().trim(),
-    dbObj["jobTitle"]   = element("h2.jobtitle").text().trim(),
-    dbObj["jobSummary"] = element("span.summary").text().trim();
+    element = cheerio.load($.html(JSC));
+
+    dbObj["compName"] = element(".company").text().trim() || "N/A",
+    dbObj["jobTitle"]   = element("h2.jobtitle").text().trim() || "N/A",
+    dbObj["jobSummary"] = element("span.summary").text().trim() || "N/A";
+    dbObj["id"] = element(".jobsearch-SerpJobCard").attr("id") || "N/A";
+
+    if(dbObj["jobTitle"]==="")
+      dbObj["jobTitle"] = "N/A";
     // console.log("--------------------------------");
     // console.log(dbObj["compName"] + "  " + dbObj["jobTitle"]);
     // console.log(dbObj["jobSummary"]);
     // console.log("_________________________________");
     allObj[i]=dbObj;
   });
-  dbQueryRouter("SJ",params["collection"],allObj);
+   dbQueryRouter("SJ",params["collection"],allObj);
 }
 
 //asynchronous message from renderer is sent here... !!REFACTOR...find  a way to hand
 // off messages to respective functions !!
 ipcMain.on('asynchronous-message', (event, args) =>{
   let params = {};
-  console.log(args);
+//  console.log(args);
   //when argss are recieved from renderer process, loop through the values[a list] for key args["q"].
   if(args["Method"] === "Scrape"){
     let qString = "";
