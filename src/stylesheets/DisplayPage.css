@@ -2,6 +2,11 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px; }
+  * #Container iframe {
+    position: absolute;
+    frameborder: 0;
+    z-index: 10;
+    display: none; }
   * #Container #display {
     width: 100%; }
     * #Container #display .jobContainer:first-child {
@@ -17,7 +22,7 @@
         border-bottom: none;
         border-top: none;
         font-size: 20px;
-        padding-top: 10px;
+        padding-top: 2px;
         padding-bottom: 5px; }
         * #Container #display .jobContainer .jobHeader ul {
           display: inline-block;
@@ -47,5 +52,7 @@
         padding: 10px 10px 10px 10px;
         margin-left: 5px;
         margin-top: 10px; }
+      * #Container #display .jobContainer .pullUp:hover {
+        background-color: navy; }
 
 /*# sourceMappingURL=DisplayPage.css.map */

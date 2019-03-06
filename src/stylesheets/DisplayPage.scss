@@ -4,6 +4,12 @@
   padding:0px;
   #Container{
     //background-color: black;
+    iframe{
+      position:absolute;
+      frameborder:0;
+      z-index:10;
+      display:none;
+    }
     #display{
       width:100%;
       .jobContainer:first-child{
@@ -25,7 +31,7 @@
             border-top:none;
             font-size:20px;
             //margin-top: 5px;
-            padding-top: 10px;
+            padding-top: 2px;
             padding-bottom:5px;
             ul{
               display: inline-block;
@@ -62,6 +68,9 @@
             padding:10px 10px 10px 10px;
             margin-left: 5px;
             margin-top:10px;
+          }
+          .pullUp:hover{
+            background-color:navy;
           }
       }
     }

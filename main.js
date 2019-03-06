@@ -11,14 +11,14 @@ var window;
 function createWindow(){
   win = new BrowserWindow({width:800,height:600});
   window = win;
-  win.loadFile('ScrapePage.html');
+  win.loadFile('./ScrapePage.html');
 }
 
 app.on('ready', createWindow);
 
 //Display Page
 function displaycollection(collecObj){
-  window.loadFile("DisplayPage.html");
+  window.loadFile("./DisplayPage.html");
   window.webContents.on('did-finish-load', () => {
   collecObj.find({}).toArray((err,results)=>{
     console.log(results);
@@ -59,10 +59,11 @@ function SJ_db_qHandler(db,collection,args){
     console.log(elem["id"]);
     collec.findOne({"id" : elem["id"]}, function (err,results){
       console.log(results);
-      if(results !== null) return;
+      if(results === null)
       collec.insert(elem);
     });
     if( i == args.length-1){
+      console.log('doing that now');
       displaycollection(collec);
     }
   })
@@ -85,13 +86,12 @@ function scrapeJobs(body,params){
     element = cheerio.load($.html(JSC));
     let href = element("a").first().attr("href");
     //console.log(href);
-    dbObj["compName"] = element(".company").text().trim() || "N/A",
-    dbObj["jobTitle"]   = element("h2.jobtitle").text().trim() || "N/A",
-    dbObj["jobSummary"] = element("span.summary").text().trim() || "N/A";
-    dbObj["id"] = element(".jobsearch-SerpJobCard").attr("id") || "N/A";
-
-    if(dbObj["jobTitle"]==="")
-      dbObj["jobTitle"] = "N/A";
+    dbObj["href"] = href;
+    dbObj["compName"] = element(".company").text().trim() || "Not Stated",
+    dbObj["jobTitle"]   = element("h2.jobtitle").text().trim() || "Not Stated",
+    dbObj["jobSummary"] = element("span.summary").text().trim() || "Not Stated";
+    dbObj["id"] = element(".jobsearch-SerpJobCard").attr("id") || "Not Stated";
+    getfullSummary(href,allObj,i);
     // console.log("--------------------------------");
     // console.log(dbObj["compName"] + "  " + dbObj["jobTitle"]);
     // console.log(dbObj["jobSummary"]);
@@ -106,8 +106,8 @@ function getfullSummary(href,allObj,i){
   let url = "https://ca.indeed.com";
   req({method:'GET', url:url+href} , (err,res,body) => {
     let $ = cheerio.load(body);
-    summary = $(".jobsearch-JobComponent-description").text();
-    allObj[i]["jobSummary"] = summary;
+    summary = $(".jobsearch-JobComponent-description").html();
+    allObj[i]["summary"] = summary;
     //return summary;
   });
 }

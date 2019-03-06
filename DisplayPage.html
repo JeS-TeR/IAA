@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>DisplayPage</title>
-    <link rel="stylesheet" type="text/css" id ="cssID" href="./DisplayPage.css" />
+    <link rel="stylesheet" type="text/css" id ="cssID" href="./src/stylesheets/DisplayPage.css" />
   </head>
   <body>
     <div id="Container">
+      <iframe id="popup"></iframe>
       <div id="display">
         <div class = "jobContainer">
           <header class="jobHeader">
@@ -23,11 +24,11 @@
             <p class = "summary">
 
             </p>
-            <div class="pullUp" onclick="GetSummary()"> Read More</div>
+            <div class="pullUp" onclick="POPup(this)"> Read More</div>
           </div>
         </div>
       </div>
     </div>
   </body>
-  <script type="text/javascript" src="DisplayPage.js"></script>
+  <script type="text/javascript" src="./src/scripts/DisplayPage.js"></script>
 </html>
