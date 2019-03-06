@@ -6,15 +6,29 @@ const req = require("request");
 const fs = require("fs");
 
 
-
 //WINDOW CREATION
+var window;
 function createWindow(){
   win = new BrowserWindow({width:800,height:600});
-  win.loadFile('main.html');
+  window = win;
+  win.loadFile('ScrapePage.html');
 }
 
 app.on('ready', createWindow);
 
+//Display Page
+function displaycollection(collecObj){
+  window.loadFile("DisplayPage.html");
+  window.webContents.on('did-finish-load', () => {
+  collecObj.find({}).toArray((err,results)=>{
+    console.log(results);
+    window.webContents.send('data', results);
+  });
+});
+
+
+  console.log(2);
+}
 //Database Definition
 var url = "mongodb://localhost:27017/";
 
@@ -29,6 +43,7 @@ function dbQueryRouter(caller,collection,args){
     if(err) console.log(err);
     switch(caller){
       case "SJ":
+        console.log(collection + ": 2")
         SJ_db_qHandler(db,collection,args);
         break;
     }
@@ -38,17 +53,20 @@ function dbQueryRouter(caller,collection,args){
 //dbHandlers
 
 function SJ_db_qHandler(db,collection,args){
-  collec = db.collection(collection);
+  var collec = db.collection(collection);
+  console.log(0);
   args.forEach(function (elem,i){
-    //console.log(elem["id"]);
+    console.log(elem["id"]);
     collec.findOne({"id" : elem["id"]}, function (err,results){
-      //console.log(results);
-      if(results !== null)
-      return;
-      //console.log(null);
+      console.log(results);
+      if(results !== null) return;
       collec.insert(elem);
-      })
+    });
+    if( i == args.length-1){
+      displaycollection(collec);
+    }
   })
+  console.log(1);
 }
 
 //Main "interface" that handles scraping...
@@ -65,7 +83,8 @@ function scrapeJobs(body,params){
   JSCards.each((i,JSC) => {
     var dbObj ={};
     element = cheerio.load($.html(JSC));
-
+    let href = element("a").first().attr("href");
+    //console.log(href);
     dbObj["compName"] = element(".company").text().trim() || "N/A",
     dbObj["jobTitle"]   = element("h2.jobtitle").text().trim() || "N/A",
     dbObj["jobSummary"] = element("span.summary").text().trim() || "N/A";
@@ -77,9 +96,20 @@ function scrapeJobs(body,params){
     // console.log(dbObj["compName"] + "  " + dbObj["jobTitle"]);
     // console.log(dbObj["jobSummary"]);
     // console.log("_________________________________");
-    allObj[i]=dbObj;
+      allObj[i]=dbObj;
+
   });
    dbQueryRouter("SJ",params["collection"],allObj);
+}
+
+function getfullSummary(href,allObj,i){
+  let url = "https://ca.indeed.com";
+  req({method:'GET', url:url+href} , (err,res,body) => {
+    let $ = cheerio.load(body);
+    summary = $(".jobsearch-JobComponent-description").text();
+    allObj[i]["jobSummary"] = summary;
+    //return summary;
+  });
 }
 
 //asynchronous message from renderer is sent here... !!REFACTOR...find  a way to hand
@@ -113,5 +143,4 @@ ipcMain.on('asynchronous-message', (event, args) =>{
   //   });
   //
   // }
-
 });

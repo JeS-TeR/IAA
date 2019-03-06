@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px; }
+  * #Container #display {
+    width: 100%; }
+    * #Container #display .jobContainer:first-child {
+      display: none; }
+    * #Container #display .jobContainer {
+      -webkit-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.75);
+      width: 80%;
+      margin: 20px auto; }
+      * #Container #display .jobContainer .jobHeader {
+        background-color: #7EF9FF;
+        border-bottom: none;
+        border-top: none;
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 5px; }
+        * #Container #display .jobContainer .jobHeader ul {
+          display: inline-block;
+          margin-left: 5px;
+          width: 90%; }
+          * #Container #display .jobContainer .jobHeader ul li {
+            list-style-type: none;
+            margin-top: 10px; }
+        * #Container #display .jobContainer .jobHeader form {
+          float: right; }
+      * #Container #display .jobContainer .jobSummary {
+        border-bottom: none;
+        border-top: none;
+        background-color: #7eff84;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        text-align: center; }
+        * #Container #display .jobContainer .jobSummary p {
+          font-size: 17px;
+          margin-left: 5px;
+          text-align: left; }
+      * #Container #display .jobContainer .pullUp {
+        background-color: #7eb9ff;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        padding: 10px 10px 10px 10px;
+        margin-left: 5px;
+        margin-top: 10px; }
+
+/*# sourceMappingURL=DisplayPage.css.map */

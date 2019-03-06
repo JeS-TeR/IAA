@@ -36,7 +36,7 @@ function ProcessData(){
     }
   }
   loc = document.getElementById('l').value;
-  collection = document.getElementById("collection").value
+  collection = document.getElementById("collection").value;
   //qArray=q;
   var args = {
     "Method":"Scrape",
