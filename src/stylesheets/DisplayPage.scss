@@ -1,78 +1,203 @@
 *{
   box-sizing: border-box;
   margin:0px;
-  padding:0px;
-  #Container{
-    //background-color: black;
-    iframe{
-      position:absolute;
-      frameborder:0;
-      z-index:10;
-      display:none;
+  padding:0x;
+  //background-color: red;
+  @keyframes darken{
+    0%{
+      opacity: 1;
     }
-    #display{
-      width:100%;
-      .jobContainer:first-child{
-        display:none;
+    100%{
+      opacity:0.3;
+    }
+  }
+
+  box-sizing: border-box;
+  margin:0px;
+  padding:0px;
+  // #pullOver{
+  //   top:0;
+  //   left:0;
+  //   position:fixed;
+  //   height:100%;
+  //   width:100%;
+  //   background-color: black;
+  //   opacity:0.4;
+  //   z-index:5;
+  // }
+  body::-webkit-scrollbar {
+    width: 0.8em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: black;
+  outline: 1px solid slategrey;
+}
+  body{
+  
+  #popup::-webkit-scrollbar {
+      width: 0.5em;
+  }
+
+  #popup::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: grey;
+  }
+
+  #popup::-webkit-scrollbar-thumb {
+    background-color: black;
+    outline: 1px solid slategrey;
+  }
+    #popup{
+      background-color: #7eff84;
+      // border:2px solid blue;
+      webkit-box-shadow: -10px 5px 5px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -10px 5px 5px 0px rgba(0,0,0,0.75);
+      box-shadow: -10px 5px 5px 0px rgba(0,0,0,0.75);
+      display:none;
+      left: 0;
+      height: 100%;
+      right: 0;
+      top:0px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left:10px;
+      padding-right:10px;
+      opacity: 1;
+      overflow-y: scroll;
+      position:fixed;
+      width:85%;
+
+      ul{
+        margin-top:10px;
+        li:first{
+          margin-top:10px;
+        }
       }
-      .jobContainer{
-        // border:2px solid black;
-        // border-left:10px solid black;
-        -webkit-box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
-        box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
-        width:80%;
+      p{
+    //    border:2px solid black;
+        padding-top:10px;
+      }
+    }
+
+
+
+    #popup:active{
+    //  animation: darken .5s;
+    }
+    #Container{
+      //background-color: black;
+      #dummyNav{
+        height:50px;
+        width:100%;
+      }
+      // !!!TODO: Fix alignment, ul not positioned to the left of nav;
+      nav{
+        background-color:teal;
+        width:100%;
+        height:50px;
+        position:fixed;
+        
+        text-align:center;
+        ul{
+          display:block;
+          height: 100%;
+          width:100%;
+          li{
+            display:inline-block;
+            height:100%;
+            width: 30%;
+            a{
+              display:block;
+              height:100%;
+              padding-top:15px;
+            }
+          }
+        }
+      }
+      width:100%;
+        p{
+          margin-top: 10px;
+        }
+        ul{
+          margin-left:20px;
+          li{
+          //  margin-top:2px;
+          }
+        }
+      }
+      #display{
+        //background-color: black;
+
         margin:20px auto;
-      //  padding-right:10px;
-          .jobHeader{
-            background-color:#7EF9FF;
-          //  border:2px solid black;
-            border-bottom:none;
-            border-top:none;
-            font-size:20px;
-            //margin-top: 5px;
-            padding-top: 2px;
-            padding-bottom:5px;
-            ul{
-              display: inline-block;
-              margin-left: 5px;
-              width:90%;
-              li{
-                list-style-type: none;
-                margin-top: 10px;
+        width:80%;
+        z-index:10;
+        .jobContainer:first-child{
+          display:none;
+        }
+        .jobContainer{
+          // border:2px solid black;
+          // border-left:10px solid black;
+          -webkit-box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
+          box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
+          margin-top: 20px;
+          width:100%;
+        //  padding-right:10px;
+            .jobHeader{
+              background-color:#7EF9FF;
+            //  border:2px solid black;
+              border-bottom:none;
+              border-top:none;
+              font-size:20px;
+              //margin-top: 5px;
+              padding-top: 2px;
+              padding-bottom:5px;
+              ul{
+                display: inline-block;
+                margin-left: 5px;
+                width:90%;
+                li{
+                  list-style-type: none;
+                  margin-top: 10px;
+                }
+              }
+              form{
+                float:right;
               }
             }
-            form{
-              float:right;
+            .jobSummary{
+              //border:2px solid black;
+              border-bottom:none;
+              border-top:none;
+              background-color:#7eff84;
+              padding-top: 10px;
+              padding-bottom:5px;
+              text-align:center;
+              p{
+                font-size:17px;
+                margin-left:5px;
+                text-align: left;
+              }
             }
-          }
-          .jobSummary{
-            //border:2px solid black;
-            border-bottom:none;
-            border-top:none;
-            background-color:#7eff84;
-            padding-top: 10px;
-            padding-bottom:5px;
-            text-align:center;
-            p{
-              font-size:17px;
-              margin-left:5px;
-              text-align: left;
+            .pullUp{
+              background-color: #7eb9ff;
+              color:white;
+              cursor: pointer;
+              display:inline-block;
+              padding:10px 10px 10px 10px;
+              margin-left: 5px;
+              margin-top:10px;
             }
-          }
-          .pullUp{
-            background-color: #7eb9ff;
-            color:white;
-            cursor: pointer;
-            display:inline-block;
-            padding:10px 10px 10px 10px;
-            margin-left: 5px;
-            margin-top:10px;
-          }
-          .pullUp:hover{
-            background-color:navy;
-          }
+            .pullUp:hover{
+              background-color:navy;
+        }
       }
     }
   }
+
 }

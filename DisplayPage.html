@@ -5,9 +5,19 @@
     <title>DisplayPage</title>
     <link rel="stylesheet" type="text/css" id ="cssID" href="./src/stylesheets/DisplayPage.css" />
   </head>
-  <body>
+  <body  onclick="DropDown()" style="z-index:-1">
+    
     <div id="Container">
-      <iframe id="popup"></iframe>
+      <nav> 
+        <ul>
+          <li><a href="./ScrapePage.html">Scrape Page</a></li>
+          <li><a href="">Previous Searches</a></li>
+          <li><a href="">Resumes</a></li>
+        </ul>
+      </nav>
+      <div id="dummyNav"></div>
+      <div id="pullOver"></div>
+      <div id="popup"></div>
       <div id="display">
         <div class = "jobContainer">
           <header class="jobHeader">
@@ -22,7 +32,6 @@
           </header>
           <div class="jobSummary">
             <p class = "summary">
-
             </p>
             <div class="pullUp" onclick="POPup(this)"> Read More</div>
           </div>

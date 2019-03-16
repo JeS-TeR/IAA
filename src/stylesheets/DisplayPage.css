@@ -1,50 +1,121 @@
 * {
   box-sizing: border-box;
   margin: 0px;
+  padding: 0x;
+  box-sizing: border-box;
+  margin: 0px;
   padding: 0px; }
-  * #Container iframe {
-    position: absolute;
-    frameborder: 0;
-    z-index: 10;
-    display: none; }
-  * #Container #display {
+@keyframes darken {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0.3; } }
+  * body::-webkit-scrollbar {
+    width: 0.8em; }
+  * body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+  * body::-webkit-scrollbar-thumb {
+    background-color: black;
+    outline: 1px solid slategrey; }
+  * body #popup::-webkit-scrollbar {
+    width: 0.5em; }
+  * body #popup::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: grey; }
+  * body #popup::-webkit-scrollbar-thumb {
+    background-color: black;
+    outline: 1px solid slategrey; }
+  * body #popup {
+    background-color: #7eff84;
+    webkit-box-shadow: -10px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -10px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -10px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    display: none;
+    left: 0;
+    height: 100%;
+    right: 0;
+    top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 1;
+    overflow-y: scroll;
+    position: fixed;
+    width: 85%; }
+    * body #popup ul {
+      margin-top: 10px; }
+      * body #popup ul li:first {
+        margin-top: 10px; }
+    * body #popup p {
+      padding-top: 10px; }
+  * body #Container {
     width: 100%; }
-    * #Container #display .jobContainer:first-child {
+    * body #Container #dummyNav {
+      height: 50px;
+      width: 100%; }
+    * body #Container nav {
+      background-color: teal;
+      width: 100%;
+      height: 50px;
+      position: fixed;
+      text-align: center; }
+      * body #Container nav ul {
+        display: block;
+        height: 100%;
+        width: 100%; }
+        * body #Container nav ul li {
+          display: inline-block;
+          height: 100%;
+          width: 30%; }
+          * body #Container nav ul li a {
+            display: block;
+            height: 100%;
+            padding-top: 15px; }
+    * body #Container p {
+      margin-top: 10px; }
+    * body #Container ul {
+      margin-left: 20px; }
+  * body #display {
+    margin: 20px auto;
+    width: 80%;
+    z-index: 10; }
+    * body #display .jobContainer:first-child {
       display: none; }
-    * #Container #display .jobContainer {
+    * body #display .jobContainer {
       -webkit-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.75);
       box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.75);
-      width: 80%;
-      margin: 20px auto; }
-      * #Container #display .jobContainer .jobHeader {
+      margin-top: 20px;
+      width: 100%; }
+      * body #display .jobContainer .jobHeader {
         background-color: #7EF9FF;
         border-bottom: none;
         border-top: none;
         font-size: 20px;
         padding-top: 2px;
         padding-bottom: 5px; }
-        * #Container #display .jobContainer .jobHeader ul {
+        * body #display .jobContainer .jobHeader ul {
           display: inline-block;
           margin-left: 5px;
           width: 90%; }
-          * #Container #display .jobContainer .jobHeader ul li {
+          * body #display .jobContainer .jobHeader ul li {
             list-style-type: none;
             margin-top: 10px; }
-        * #Container #display .jobContainer .jobHeader form {
+        * body #display .jobContainer .jobHeader form {
           float: right; }
-      * #Container #display .jobContainer .jobSummary {
+      * body #display .jobContainer .jobSummary {
         border-bottom: none;
         border-top: none;
         background-color: #7eff84;
         padding-top: 10px;
         padding-bottom: 5px;
         text-align: center; }
-        * #Container #display .jobContainer .jobSummary p {
+        * body #display .jobContainer .jobSummary p {
           font-size: 17px;
           margin-left: 5px;
           text-align: left; }
-      * #Container #display .jobContainer .pullUp {
+      * body #display .jobContainer .pullUp {
         background-color: #7eb9ff;
         color: white;
         cursor: pointer;
@@ -52,7 +123,7 @@
         padding: 10px 10px 10px 10px;
         margin-left: 5px;
         margin-top: 10px; }
-      * #Container #display .jobContainer .pullUp:hover {
+      * body #display .jobContainer .pullUp:hover {
         background-color: navy; }
 
 /*# sourceMappingURL=DisplayPage.css.map */
