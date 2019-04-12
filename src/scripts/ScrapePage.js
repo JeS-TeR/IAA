@@ -1,49 +1,36 @@
 const {ipcRenderer} = require('electron');
-function clearValue(formEl){
-  if(!formEl.beenChanged){
-    console.log("we working");
+
+let clearValue = formEl => {
+  if(!formEl.beenChanged)
     formEl.value="";
-  }
   formEl.beenChanged = true;
 }
 
-// while input is being filled out the data must be sent to the main process so
-// that the main process can query database and send back info to the renderer.
-//IMPLEMENT LATER!!!!!!!!!!!!!!!
-function autoFill(){
-
-}
-
-// var qArray = [];
-// var loc = "";
-
-//This code can(DEFINATELY) be optimized; ITS U-G-L-Y !!!!! .. I dont like ugly ;).
 function ProcessData(){
-  q = [];
-  inputFields = document.getElementsByClassName('q');
+  
+  let q = [];
+  let inputFields = document.getElementsByClassName('q');
+  let collection,loc,website = "";
+
   for(i = 0; i < inputFields.length; i++){
     if(inputFields[i].type == "number"){
       q.push("$"+inputFields[i].value);
+      continue;
     }
     else if(inputFields[i].type=="radio"){
-      if(!inputFields[i].checked){
-        continue
+      if(inputFields[i].checked){
+        q.push(inputFields[i].value);
       }
-      q.push(inputFields[i].value);
+      continue;
     }
-    else{
-      q.push(inputFields[i].value);
-    }
+    q.push(inputFields[i].value);
   }
+
   loc = document.getElementById('l').value;
   collection = document.getElementById("collection").value;
-  //qArray=q;
-  var args = {
-    "Method":"Scrape",
-    "l":loc,
-    "q":q,
-    "collection":collection
-  }
+  website = document.getElementById("site").value;
+
+  let args = {"location":loc,"query":q,"collection":collection,"website":website};
   sendToMain(args);
 }
 

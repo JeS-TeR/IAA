@@ -1,0 +1,28 @@
+{   
+        "indeed":{
+            "query" : {
+                "where":"l"
+            },
+            "name"        : "indeed", 
+            "url"         : "https://www.indeed.ca/jobs?",
+            "container"   : ".jobsearch-SerpJobCard",
+            "jobTitle"    : ".jobtitle",
+            "companyName" : ".company",
+            "jobSummary"  : ".summary",
+            "location"    : ".location"
+        },
+
+        "monster":{
+            "query" : {
+                "where":"where"
+            },
+            "name"        : "monster", 
+            "url"         : "https://www.monster.ca/jobs/search/?",
+            "container"   : ".flex-row",
+            "jobTitle"    : ".title",
+            "companyName" : ".company",
+            "href"        : ".title a",
+            "location"    : ".location"
+        }
+    
+}

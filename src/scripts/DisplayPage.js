@@ -31,7 +31,7 @@ function createElements(container,elem){
   var jobContainer = document.getElementsByClassName("jobContainer");
   var cloned = jobContainer[0].cloneNode("deep");
   console.log(elem["summary"]);
-  var objs = ["https://ca.indeed.com"+elem["href"],elem["summary"]||"<div id='I/A'><h1 >No Summary Provided by Indeed</h1></div>"];
+  var objs = ["https://ca.indeed.com"+elem["href"],elem["fullSummary"]||"<div id='I/A'><h1 >No Summary Provided by Indeed</h1></div>"];
   //console.log(objs);
   popById[elem.id] = objs;
 
@@ -39,7 +39,7 @@ function createElements(container,elem){
   //why am i doing this? There most be a library... too lazy to get library... Torture...
   cloned.firstElementChild.firstElementChild.firstElementChild.innerHTML += " " + elem.jobTitle;
   cloned.firstElementChild.firstElementChild.children[1].innerHTML += " " + elem.compName;
-  cloned.children[1].firstElementChild.innerHTML=elem.jobSummary;
+  cloned.children[1].firstElementChild.innerHTML=elem.summary;
   container.appendChild(cloned);
   if (elem["jobTitle"] == "Not Stated")
   cloned.firstElementChild.firstElementChild.firstElementChild.style.color="crimson";

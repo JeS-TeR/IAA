@@ -13,17 +13,23 @@
              <li><label>SearchName</label><span> :</span><input id="collection"name="collection" value="javaDev" type="text"/> </li>
               <li><label>Job Name</label><span> :</span><input class="q" beenChanged=false onfocus="clearValue(this)" type="text" name="Job_Name" value="javascript"/></li>
               <li><label>Salary</label><span> :</span><input   class="q" beenChanged=false onfocus="clearValue(this)" type="number" name="Salary" value="50000"/></li>
+              <li>
+                <label>Site:</label>
+                <select id="site">
+                  <option value="indeed">Indeed</option>
+                  <option value="monster">Monster</option>
+                </select>
+            </li>
             </div>
             <div style="height:150px; margin-top:30px;">
-              <div id="radio_buttons" style="">
-                <li><label>Part-Time</label> <input class="q" name="action" value="Part Time" type="radio" /></li>
-                <li><label>Full-Time</label> <input class="q" name="action" value="Full Time"  type="radio" /></li>
-                <li><label>Seasonal</label> <input  class="q" name="action" value="Seasonal" type="radio" /></li>
-                <li><label>Contract</label> <input  class="q" name="action" value="Contract" type="radio" /></li>
+              <div id="radio_buttons">
+                <li><label>Part-Time</label> <input  class="q" name="action" value="Part Time" type="radio" /></li>
+                <li><label>Full-Time</label> <input  class="q" name="action" value="Full Time"  type="radio" /></li>
+                <li><label>Seasonal</label>  <input  class="q" name="action" value="Seasonal" type="radio" /></li>
+                <li><label>Contract</label>  <input  class="q" name="action" value="Contract" type="radio" /></li>
+              </div>
 
-                </div>
-
-              <div id="location" style="">
+              <div id="location">
                 <li style=""><label>Location</label><span> :</span><input id="l" type="text" name="Location" value="Ottawa,ON"/></li>
                 <li><label>Radius</label><span> :</span><input type="number" name="Radius" value="5"/></li>
               </div>
